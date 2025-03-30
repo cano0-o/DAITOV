@@ -72,7 +72,8 @@
             <!-- Botones para seleccionar tipo de usuario -->
             <div class="user-type-buttons">
                 <button type="button" class="btn btn-outline-primary" id="btnPadres">Padres</button>
-                <button type="button" class="btn btn-outline-primary" id="btnTerapeuta">Terapeuta</button>
+                <button type="button" class="btn btn-outline-primary" id="btnTutores">Tutores</button>
+                <button type="button" class="btn btn-outline-primary" id="btnTerapeuta">Terapeutas</button>
                 
             </div>
 
@@ -93,6 +94,41 @@
                     <input type="password" class="form-control" id="padresPassword" placeholder="Contraseña" required>
                 </div>
                 
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
+            </form>
+            
+            <!-- Formulario de Registro para Tutores -->
+            <form id="formTutores" class="hidden">
+                <div class="mb-3">
+                    <label for="tutoresEmail" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="tutoresEmail" placeholder="nombre@ejemplo.com" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="tutoresNombre" class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-control" id="tutoresNombre" placeholder="Nombre Completo" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="tutoresEdad" class="form-label">Edad</label>
+                    <input type="number" class="form-control" id="tutoresEdad" placeholder="Ingresa tu edad" min="1" max="120" required/>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="tutoresTitulo" class="form-label">Título</label>
+                    <input type="text" class="form-control" id="tutoresTitulo" placeholder="Título" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="tutoresGrupo" class="form-label">Grupo</label>
+                    <input type="text" class="form-control" id="tutoresGrupo" placeholder="Grupo" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="tutoresPassword" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="tutoresPassword" placeholder="Contraseña" required>
+                </div>
+
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
             </form>
 
@@ -146,26 +182,38 @@
         // Mostrar el formulario correspondiente al tipo de usuario seleccionado
         document.getElementById("btnPadres").addEventListener("click", function () {
             document.getElementById("formPadres").classList.remove("hidden");
+            document.getElementById("formTutores").classList.add("hidden");
             document.getElementById("formTerapeuta").classList.add("hidden");
-            document.getElementById("formPacientes").classList.add("hidden");
             document.getElementById("btnPadres").classList.remove("btn-outline-primary");
             document.getElementById("btnPadres").classList.add("btn-primary");
+            document.getElementById("btnTutores").classList.remove("btn-primary");
+            document.getElementById("btnTutores").classList.add("btn-outline-primary");
             document.getElementById("btnTerapeuta").classList.remove("btn-primary");
             document.getElementById("btnTerapeuta").classList.add("btn-outline-primary");
-            document.getElementById("btnPacientes").classList.remove("btn-primary");
-            document.getElementById("btnPacientes").classList.add("btn-outline-primary");
+        });
+
+        document.getElementById("btnTutores").addEventListener("click", function () {
+            document.getElementById("formTutores").classList.remove("hidden");
+            document.getElementById("formPadres").classList.add("hidden");
+            document.getElementById("formTerapeuta").classList.add("hidden");
+            document.getElementById("btnTutores").classList.remove("btn-outline-primary");
+            document.getElementById("btnTutores").classList.add("btn-primary");
+            document.getElementById("btnPadres").classList.remove("btn-primary");
+            document.getElementById("btnPadres").classList.add("btn-outline-primary");
+            document.getElementById("btnTerapeuta").classList.remove("btn-primary");
+            document.getElementById("btnTerapeuta").classList.add("btn-outline-primary");
         });
 
         document.getElementById("btnTerapeuta").addEventListener("click", function () {
             document.getElementById("formTerapeuta").classList.remove("hidden");
             document.getElementById("formPadres").classList.add("hidden");
-            document.getElementById("formPacientes").classList.add("hidden");
+            document.getElementById("formTutores").classList.add("hidden");
             document.getElementById("btnTerapeuta").classList.remove("btn-outline-primary");
             document.getElementById("btnTerapeuta").classList.add("btn-primary");
             document.getElementById("btnPadres").classList.remove("btn-primary");
             document.getElementById("btnPadres").classList.add("btn-outline-primary");
-            document.getElementById("btnPacientes").classList.remove("btn-primary");
-            document.getElementById("btnPacientes").classList.add("btn-outline-primary");
+            document.getElementById("btnTutores").classList.remove("btn-primary");
+            document.getElementById("btnTutores").classList.add("btn-outline-primary");
         });
     </script>
 
