@@ -1,0 +1,25 @@
+<h1>Bienvenido a DAITOP</h1>
+<p>Esta es la página principal</p>
+
+<% if current_therapist %>
+  <p>Has iniciado sesión como: <%= current_therapist.email %></p>
+<% else %>
+  <%= link_to 'Iniciar Sesión', new_session_path, class: 'btn btn-primary' %>
+<% end %>
+<!-- <% if current_therapist %> -->
+<!--   <div class="container mt-5"> -->
+<!--     <div class="card text-center"> -->
+<!--       <div class="card-header"> -->
+<!--         Bienvenido -->
+<!--       </div> -->
+<!--       <div class="card-body"> -->
+<!--         <h5 class="card-title">¡Hola <%= current_therapist.first_name %>!</h5> -->
+<!--         <p class="card-text">Has iniciado sesión correctamente en el sistema.</p> -->
+<!--         <%= link_to 'Cerrar Sesión', destroy_session_path, method: :delete, class: 'btn btn-danger' %> -->
+<!--       </div> -->
+<!--       <div class="card-footer text-muted"> -->
+<!--         Sistema DAITOP -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- <% end %> -->

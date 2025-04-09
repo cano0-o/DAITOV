@@ -1,0 +1,32 @@
+<div class="auth-container login-container">
+  <div class="form-card">
+    <%= image_tag 'logo.png', alt: 'Logo DAITOP', class: 'logo' %>
+    
+    <h3 class="mb-4 fw-normal text-center">Iniciar Sesión</h3>
+
+    <%= form_with(url: inicio_sesion_path, local: true) do |form| %>
+      <div class="mb-3">
+        <%= form.label :email, "Correo Electrónico", class: 'form-label' %>
+        <%= form.email_field :email, class: 'form-control', placeholder: 'nombre@ejemplo.com', required: true %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :password, "Contraseña", class: 'form-label' %>
+        <%= form.password_field :password, class: 'form-control', placeholder: 'Contraseña', required: true %>
+      </div>
+
+      <div class="mb-3 form-check">
+        <%= form.check_box :remember_me, class: 'form-check-input' %>
+        <%= form.label :remember_me, "Recordarme", class: 'form-check-label' %>
+      </div>
+
+      <%= form.submit "Iniciar Sesión", class: 'w-100 btn btn-lg btn-primary' %>
+
+      <div class="text-center mt-3">
+        <%= link_to '¿Quieres crear una cuenta?', new_therapist_path, class: 'text-decoration-none' %>
+      </div>
+    <% end %>
+  </div>
+  
+  <p class="copyright mt-5 mb-3 text-muted">&copy; Instituto Tecnologico de Ensenada</p>
+</div>

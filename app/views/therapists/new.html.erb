@@ -1,0 +1,62 @@
+<div class="auth-container">
+  <div class="form-card">
+    <%= image_tag 'logo.png', alt: 'Logo DAITOP', class: 'logo' %>
+    
+    <h3 class="mb-4 fw-normal text-center">Registro Terapeutas</h3>
+
+    <%= form_with(model: @therapist, url: registro_path, local: true) do |form| %>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <%= form.label :first_name, "Nombre" %>
+          <%= form.text_field :first_name, class: 'form-control', required: true %>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <%= form.label :last_name, "Apellido Paterno" %>
+          <%= form.text_field :last_name, class: 'form-control', required: true %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <%= form.label :maternal_surname, "Apellido Materno" %>
+          <%= form.text_field :maternal_surname, class: 'form-control' %>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <%= form.label :age, "Edad" %>
+          <%= form.number_field :age, class: 'form-control', min: 18, max: 120, required: true %>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :degree, "Título Profesional" %>
+        <%= form.text_field :degree, class: 'form-control', required: true %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :session_location, "Lugar de la Sesión" %>
+        <%= form.text_field :session_location, class: 'form-control', required: true %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :email, "Correo Electrónico" %>
+        <%= form.email_field :email, class: 'form-control', required: true %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :password, "Contraseña" %>
+        <%= form.password_field :password, class: 'form-control', required: true %>
+      </div>
+
+      <%= form.submit "Registrarse", class: 'w-100 btn btn-lg btn-primary' %>
+    <% end %>
+
+    <div class="text-center mt-3">
+      <%= link_to '¿Ya tienes una cuenta? Inicia sesión', new_session_path, class: 'text-decoration-none' %>
+    </div>
+  </div>
+  
+  <p class="copyright mt-5 mb-3 text-muted">&copy; Instituto Tecnologico de Ensenada</p>
+  </div>
+</div>
