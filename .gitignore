@@ -34,3 +34,8 @@
 /config/master.key
 
 .DS_Store
+
+# Archivos de Emacs
+*~
+\#*#
+/.#*
