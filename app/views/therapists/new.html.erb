@@ -1,62 +1,333 @@
-<div class="auth-container">
-  <div class="form-card">
-    <%= image_tag 'logo.png', alt: 'Logo DAITOP', class: 'logo' %>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0); /* Fondo degradado */
+        }
+
+        .register-container {
+            max-width: 600px; /* Más ancho para acomodar más campos */
+            margin: 0 auto;
+            padding: 2rem;
+            margin-top: 5%;
+        }
+        
+        .form-register {
+            background: rgb(255, 255, 255); /* Fondo blanco para el formulario */
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            color: #000000; /* Texto negro para el copyright */
+        }
+
+        .logo {
+            max-width: 100%; /* Asegura que el logo no se salga del contenedor */
+            height: auto; /* Mantiene la proporción del logo */
+            display: block; /* Centra el logo */
+            margin: 0 auto 1.5rem auto; /* Espaciado inferior */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            animation: fadeIn 1s ease-in-out; /* Animación de desvanecimiento */
+        }
+
+        .user-type-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .user-type-buttons .btn {
+            flex: 1;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="form-register">
+            <%= image_tag 'logo.png', alt: 'Logo DAITOP', class: 'logo' %>
+            
+            <h3 class="mb-4 fw-normal text-center">Registro</h3>
+
+            <!-- Botones para seleccionar tipo de usuario -->
+            <div class="user-type-buttons">
+                <button type="button" class="btn btn-outline-primary" id="btnPadres">Padres</button>
+                <button type="button" class="btn btn-outline-primary" id="btnTutores">Tutores</button>
+                <button type="button" class="btn btn-outline-primary" id="btnTerapeuta">Teraputas</button>
+                
+            </div>
+
+            <!-- Formulario de Registro para Padres -->
+	    <form id="formPadres" class="hidden">
+		<div class="mb-3">
+		    <label for="nombre" class="form-label">Nombre</label>
+		    <input type="text" class="form-control" id="nombre" required>
+		</div>
+
+		<div class="mb-3">
+		    <label for="apellido_paterno" class="form-label">Apellido Paterno</label>
+		    <input type="text" class="form-control" id="apellido_paterno" required>
+		</div>
+
+		<div class="mb-3">
+		    <label for="apellido_materno" class="form-label">Apellido Materno</label>
+		    <input type="text" class="form-control" id="apellido_materno">
+		</div>
+
+		<div class="mb-3">
+		    <label for="edad" class="form-label">Edad</label>
+		    <input type="number" class="form-control" id="edad" min="18" required>
+		</div>
+
+		<div class="mb-3">
+		    <label for="direccion" class="form-label">Dirección</label>
+		    <input type="text" class="form-control" id="direccion" required>
+		</div>
+
+		<!-- <div class="mb-3"> -->
+		<!--     <label for="antecedentes" class="form-label">Antecedentes Médicos</label> -->
+		<!--     <textarea class="form-control" id="antecedentes" rows="3"></textarea> -->
+		<!-- </div> -->
+
+		<!-- <div class="mb-3"> -->
+		<!--     <label for="enfermedad" class="form-label">Enfermedad/Discapacidad</label> -->
+		<!--     <input type="text" class="form-control" id="enfermedad"> -->
+		<!-- </div> -->
+
+		<!-- <div class="mb-3"> -->
+		<!--     <label for="vinculo" class="form-label">Vínculo Sanguíneo</label> -->
+		<!--     <select class="form-select" id="vinculo" required> -->
+		<!-- 	<option value="">Seleccionar...</option> -->
+		<!-- 	<option value="Padre">Padre</option> -->
+		<!-- 	<option value="Madre">Madre</option> -->
+		<!-- 	<option value="Tutor Legal">Tutor Legal</option> -->
+		<!--     </select> -->
+		<!-- </div> -->
+
+		<button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
+	    </form>
+            
+            <!-- Formulario de Registro para Tutores -->
+            <form id="formTutores" class="hidden">
+		<div class="mb-3">
+		    <label for="nombre" class="form-label">Nombre</label>
+		    <input type="text" class="form-control" id="nombre" required>
+		</div>
+
+		<div class="mb-3">
+		    <label for="apellido_paterno" class="form-label">Apellido Paterno</label>
+		    <input type="text" class="form-control" id="apellido_paterno" required>
+		</div>
+
+		<div class="mb-3">
+		    <label for="apellido_materno" class="form-label">Apellido Materno</label>
+		    <input type="text" class="form-control" id="apellido_materno">
+		</div>
+
+		<div class="mb-3">
+		    <label for="edad" class="form-label">Edad</label>
+		    <input type="number" class="form-control" id="edad" min="18" required>
+		</div>
+
+		<div class="mb-3">
+		    <label for="titulo" class="form-label">Título</label>
+		    <input type="text" class="form-control" id="titulo" required>
+		</div>
+
+		<div class="mb-3">
+		    <label for="grupo" class="form-label">Grupo</label>
+		    <input type="text" class="form-control" id="grupo" required>
+		</div>
+
+		<button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
+	    </form>
+
+            <!-- Formulario de Registro para Terapeuta -->
+	    <div id="formTerapeuta" class="hidden">
+	      <div class="auth-container">
+		<div class="form-card">
+		  <%= form_with(model: @therapist, url: registro_path, local: true) do |form| %>
+		    <div class="row">
+		      <div class="col-md-6 mb-3">
+			<%= form.label :first_name, "Nombre" %>
+			<%= form.text_field :first_name, class: 'form-control', required: true %>
+		      </div>
+
+		      <div class="col-md-6 mb-3">
+			<%= form.label :last_name, "Apellido Paterno" %>
+			<%= form.text_field :last_name, class: 'form-control', required: true %>
+		      </div>
+		    </div>
+
+		    <div class="row">
+		      <div class="col-md-6 mb-3">
+			<%= form.label :maternal_surname, "Apellido Materno" %>
+			<%= form.text_field :maternal_surname, class: 'form-control' %>
+		      </div>
+
+		      <div class="col-md-6 mb-3">
+			<%= form.label :age, "Edad" %>
+			<%= form.number_field :age, class: 'form-control', min: 18, max: 120, required: true %>
+		      </div>
+		    </div>
+
+		    <div class="mb-3">
+		      <%= form.label :degree, "Título Profesional" %>
+		      <%= form.text_field :degree, class: 'form-control', required: true %>
+		    </div>
+
+		    <div class="mb-3">
+		      <%= form.label :session_location, "Lugar de la Sesión" %>
+		      <%= form.text_field :session_location, class: 'form-control', required: true %>
+		    </div>
+
+		    <div class="mb-3">
+		      <%= form.label :email, "Correo Electrónico" %>
+		      <%= form.email_field :email, class: 'form-control', required: true %>
+		    </div>
+
+		    <div class="mb-3">
+		      <%= form.label :password, "Contraseña" %>
+		      <%= form.password_field :password, class: 'form-control', required: true %>
+		    </div>
+
+		    <%= form.submit "Registrarse", class: 'w-100 btn btn-lg btn-primary' %>
+		  <% end %>
+		</div>
+	      </div>
+
+	      <div class="text-center mt-3">
+		<%= link_to '¿Ya tienes una cuenta? Inicia sesión', new_session_path, class: 'text-decoration-none' %>
+	      </div>
+	    </div>
+	    </form>
+	    
+
+	    <p class="copyright mt-5 mb-3 text-muted">&copy; Instituto Tecnologico de Ensenada</p>
+	</div>
+
+    <script>
+        // Mostrar el formulario correspondiente al tipo de usuario seleccionado
+        document.getElementById("btnPadres").addEventListener("click", function () {
+            document.getElementById("formPadres").classList.remove("hidden");
+            document.getElementById("formTutores").classList.add("hidden");
+            document.getElementById("formTerapeuta").classList.add("hidden");
+            document.getElementById("btnPadres").classList.remove("btn-outline-primary");
+            document.getElementById("btnPadres").classList.add("btn-primary");
+            document.getElementById("btnTutores").classList.remove("btn-primary");
+            document.getElementById("btnTutores").classList.add("btn-outline-primary");
+            document.getElementById("btnTerapeuta").classList.remove("btn-primary");
+            document.getElementById("btnTerapeuta").classList.add("btn-outline-primary");
+        });
+
+        document.getElementById("btnTutores").addEventListener("click", function () {
+            document.getElementById("formTutores").classList.remove("hidden");
+            document.getElementById("formPadres").classList.add("hidden");
+            document.getElementById("formTerapeuta").classList.add("hidden");
+            document.getElementById("btnTutores").classList.remove("btn-outline-primary");
+            document.getElementById("btnTutores").classList.add("btn-primary");
+            document.getElementById("btnPadres").classList.remove("btn-primary");
+            document.getElementById("btnPadres").classList.add("btn-outline-primary");
+            document.getElementById("btnTerapeuta").classList.remove("btn-primary");
+            document.getElementById("btnTerapeuta").classList.add("btn-outline-primary");
+        });
+
+        document.getElementById("btnTerapeuta").addEventListener("click", function () {
+            document.getElementById("formTerapeuta").classList.remove("hidden");
+            document.getElementById("formPadres").classList.add("hidden");
+            document.getElementById("formTutores").classList.add("hidden");
+            document.getElementById("btnTerapeuta").classList.remove("btn-outline-primary");
+            document.getElementById("btnTerapeuta").classList.add("btn-primary");
+            document.getElementById("btnPadres").classList.remove("btn-primary");
+            document.getElementById("btnPadres").classList.add("btn-outline-primary");
+            document.getElementById("btnTutores").classList.remove("btn-primary");
+            document.getElementById("btnTutores").classList.add("btn-outline-primary");
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+<!-- <div class="auth-container"> -->
+<!--   <div class="form-card"> -->
+<!--     <%= image_tag 'logo.png', alt: 'Logo DAITOP', class: 'logo' %> -->
     
-    <h3 class="mb-4 fw-normal text-center">Registro Terapeutas</h3>
+<!--     <h3 class="mb-4 fw-normal text-center">Registro Terapeutas</h3> -->
 
-    <%= form_with(model: @therapist, url: registro_path, local: true) do |form| %>
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <%= form.label :first_name, "Nombre" %>
-          <%= form.text_field :first_name, class: 'form-control', required: true %>
-        </div>
+<!--     <%= form_with(model: @therapist, url: registro_path, local: true) do |form| %> -->
+<!--       <div class="row"> -->
+<!--         <div class="col-md-6 mb-3"> -->
+<!--           <%= form.label :first_name, "Nombre" %> -->
+<!--           <%= form.text_field :first_name, class: 'form-control', required: true %> -->
+<!--         </div> -->
 
-        <div class="col-md-6 mb-3">
-          <%= form.label :last_name, "Apellido Paterno" %>
-          <%= form.text_field :last_name, class: 'form-control', required: true %>
-        </div>
-      </div>
+<!--         <div class="col-md-6 mb-3"> -->
+<!--           <%= form.label :last_name, "Apellido Paterno" %> -->
+<!--           <%= form.text_field :last_name, class: 'form-control', required: true %> -->
+<!--         </div> -->
+<!--       </div> -->
 
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <%= form.label :maternal_surname, "Apellido Materno" %>
-          <%= form.text_field :maternal_surname, class: 'form-control' %>
-        </div>
+<!--       <div class="row"> -->
+<!--         <div class="col-md-6 mb-3"> -->
+<!--           <%= form.label :maternal_surname, "Apellido Materno" %> -->
+<!--           <%= form.text_field :maternal_surname, class: 'form-control' %> -->
+<!--         </div> -->
 
-        <div class="col-md-6 mb-3">
-          <%= form.label :age, "Edad" %>
-          <%= form.number_field :age, class: 'form-control', min: 18, max: 120, required: true %>
-        </div>
-      </div>
+<!--         <div class="col-md-6 mb-3"> -->
+<!--           <%= form.label :age, "Edad" %> -->
+<!--           <%= form.number_field :age, class: 'form-control', min: 18, max: 120, required: true %> -->
+<!--         </div> -->
+<!--       </div> -->
 
-      <div class="mb-3">
-        <%= form.label :degree, "Título Profesional" %>
-        <%= form.text_field :degree, class: 'form-control', required: true %>
-      </div>
+<!--       <div class="mb-3"> -->
+<!--         <%= form.label :degree, "Título Profesional" %> -->
+<!--         <%= form.text_field :degree, class: 'form-control', required: true %> -->
+<!--       </div> -->
 
-      <div class="mb-3">
-        <%= form.label :session_location, "Lugar de la Sesión" %>
-        <%= form.text_field :session_location, class: 'form-control', required: true %>
-      </div>
+<!--       <div class="mb-3"> -->
+<!--         <%= form.label :session_location, "Lugar de la Sesión" %> -->
+<!--         <%= form.text_field :session_location, class: 'form-control', required: true %> -->
+<!--       </div> -->
 
-      <div class="mb-3">
-        <%= form.label :email, "Correo Electrónico" %>
-        <%= form.email_field :email, class: 'form-control', required: true %>
-      </div>
+<!--       <div class="mb-3"> -->
+<!--         <%= form.label :email, "Correo Electrónico" %> -->
+<!--         <%= form.email_field :email, class: 'form-control', required: true %> -->
+<!--       </div> -->
 
-      <div class="mb-3">
-        <%= form.label :password, "Contraseña" %>
-        <%= form.password_field :password, class: 'form-control', required: true %>
-      </div>
+<!--       <div class="mb-3"> -->
+<!--         <%= form.label :password, "Contraseña" %> -->
+<!--         <%= form.password_field :password, class: 'form-control', required: true %> -->
+<!--       </div> -->
 
-      <%= form.submit "Registrarse", class: 'w-100 btn btn-lg btn-primary' %>
-    <% end %>
+<!--       <%= form.submit "Registrarse", class: 'w-100 btn btn-lg btn-primary' %> -->
+<!--     <% end %> -->
 
-    <div class="text-center mt-3">
-      <%= link_to '¿Ya tienes una cuenta? Inicia sesión', new_session_path, class: 'text-decoration-none' %>
-    </div>
-  </div>
+<!--     <div class="text-center mt-3"> -->
+<!--       <%= link_to '¿Ya tienes una cuenta? Inicia sesión', new_session_path, class: 'text-decoration-none' %> -->
+<!--     </div> -->
+<!--   </div> -->
   
-  <p class="copyright mt-5 mb-3 text-muted">&copy; Instituto Tecnologico de Ensenada</p>
-  </div>
-</div>
+<!--   <p class="copyright mt-5 mb-3 text-muted">&copy; Instituto Tecnologico de Ensenada</p> -->
+<!--   </div> -->
+<!-- </div> -->
