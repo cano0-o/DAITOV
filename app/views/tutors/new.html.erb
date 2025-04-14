@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro de Tutor</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f5f7fa;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container-form {
+      max-width: 900px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+    }
+
+    .form-section h5 {
+      border-left: 5px solid #055D9A;
+      padding-left: 10px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #055D9A;
+    }
+
+    .logo {
+      max-width: 150px;
+      display: block;
+      margin: 0 auto 30px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-primary {
+      background-color: rgb(5, 93, 154);
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(5, 93, 154, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: rgb(0, 60, 110);
+      box-shadow: 0 6px 15px rgba(0, 60, 110, 0.3);
+    }
+
+    .form-control {
+      border-radius: 8px;
+    }
+
+    .form-check-input {
+      border-radius: 4px;
+    }
+
+    .text-decoration-none {
+      color: #055D9A;
+    }
+
+    .text-decoration-none:hover {
+      text-decoration: underline;
+    }
+
+    .d-grid {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container container-form">
+    <%= image_tag 'logo.png', alt: 'Logo DAITOP', class: 'logo' %>
+    <h2 class="text-center mb-4">Formulario de Registro para Tutores</h2>
+
+    <%= form_with(model: @tutor, url: registro_path, local: true, html: { class: 'needs-validation', novalidate: true }) do |form| %>
+
+    <!-- Sección de datos personales -->
+    <div class="form-section">
+      
+      <h5>Datos personales</h5>
+      <div class="row g-3">
+	<div class="col-md-4">
+	  <%= form.label :name, "Nombre(s)", class: 'form-label' %>
+	  <%= form.text_field :name, class: 'form-control', required: true %>
+	</div>
+	<div class="col-md-4">
+	  <%= form.label :paternal_last_name, "Apellido paterno", class: 'form-label' %>
+	  <%= form.text_field :paternal_last_name, class: 'form-control', required: true %>
+        </div>
+	<div class="col-md-4">
+          <%= form.label :maternal_last_name, "Apellido materno", class: 'form-label' %>
+          <%= form.text_field :maternal_last_name, class: 'form-control' %>
+        </div>
+	<div class="col-md-6 mt-3">
+	  <span class="form-label">Género</span>
+	  <div class="form-check">
+            <%= form.radio_button :gender, 'M', class: 'form-check-input', required: true %>
+            <%= form.label :gender_m, "Masculino", class: 'form-check-label', value: 'M' %>
+          </div>
+	  <div class="form-check">
+            <%= form.radio_button :gender, 'F', class: 'form-check-input', required: true %>
+            <%= form.label :gender_f, "Femenino", class: 'form-check-label', value: 'F' %>
+          </div>
+	  <div class="form-check">
+            <%= form.radio_button :gender, 'O', class: 'form-check-input', required: true %>
+            <%= form.label :gender_o, "Otro", class: 'form-check-label', value: 'O' %>
+          </div>
+	</div>
+
+	<div class="col-md-6 mt-3">
+	  <%= form.label :birth_date, "Fecha de nacimiento", class: 'form-label' %>
+	  <div class="d-flex gap-2">
+          <%= form.date_select :birth_date, {
+            start_year: Date.today.year - 100,
+            end_year: Date.today.year,
+            order: [:day, :month, :year],
+            use_month_names: %w[Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre],
+            prompt: { day: 'Día', month: 'Mes', year: 'Año' }
+              }, { class: 'form-select d-inline-block w-auto me-2', required: true } %>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <!-- Sección de información académica -->
+    <div class="form-section">
+      <h5>Información académica</h5>
+      <div class="row g-3">
+	<div class="col-md-6">
+          <%= form.label :institution_name, "Nombre del instituto", class: 'form-label' %>
+          <%= form.text_field :institution_name, class: 'form-control', required: true %>
+        </div>
+	<div class="col-md-6">
+          <%= form.label :current_profession, "Profesión actual", class: 'form-label' %>
+          <%= form.text_field :current_profession, class: 'form-control', required: true %>
+        </div>
+	<div class="col-md-6">
+          <%= form.label :graduation_year, "Año de titulación", class: 'form-label' %>
+          <%= form.number_field :graduation_year, class: 'form-control', min: 1900, max: Date.today.year, required: true %>
+        </div>
+	<div class="col-md-6">
+          <%= form.label :start_year, "Año de inicio como profesional", class: 'form-label' %>
+          <%= form.number_field :start_year, class: 'form-control', min: 1900, max: Date.today.year, required: true %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de contacto y seguridad -->
+    <div class="form-section">
+      <h5>Información de contacto y seguridad</h5>
+      <div class="row g-3">
+	<div class="col-md-6">
+          <%= form.label :email, "Correo electrónico", class: 'form-label' %>
+          <%= form.email_field :email, class: 'form-control', required: true %>
+        </div>
+	<div class="col-md-6">
+          <%= form.label :phone_number, "Número de celular", class: 'form-label' %>
+          <%= form.telephone_field :phone_number, class: 'form-control', pattern: '[0-9]{10}', title: '10 dígitos sin espacios' %>
+        </div>
+	<div class="col-md-6">
+          <%= form.label :password, "Contraseña", class: 'form-label' %>
+          <%= form.password_field :password, class: 'form-control', required: true %>
+        </div>
+	<div class="col-md-6">
+          <%= form.label :password_confirmation, "Confirmar contraseña", class: 'form-label' %>
+          <%= form.password_field :password_confirmation, class: 'form-control', required: true %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón de envío -->
+    <div class="d-grid mt-4">
+      <%= form.submit "Registrar tutor", class: 'btn btn-primary' %>
+    </div>
+    <% end %>
+    <div class="text-center mt-4">
+      <%= link_to '¿Ya tienes una cuenta? Inicia sesión aquí', new_session_path, class: 'text-decoration-none' %>
+    </div>
+  </div>
+
+  <p class="copyright mt-5 mb-3 text-muted">&copy; Instituto Tecnologico de Ensenada</p>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+	
