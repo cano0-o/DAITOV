@@ -1,9 +1,11 @@
+<% if current_therapist %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAITOV - Menú del Terapeuta</title>
+    <title>DAITOV - Menú del Tutor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -56,7 +58,7 @@
         }
 
         .nav-tabs .nav-link {
-            color: #007bff; /* Color azul para las pestañas */
+            color: #055D9A; /* Color azul para las pestañas */
             border: 1px solid transparent;
             border-radius: 8px 8px 0 0;
             transition: background-color 0.3s ease;
@@ -102,51 +104,49 @@
         .btn-danger:hover {
             background-color: #c82333; /* Color rojo más oscuro al pasar el mouse */
         }
+        .btn-primary {
+        background-color: rgb(5, 93, 154);
+        border: none;
+        box-shadow: 0 4px 10px rgba(5, 93, 154, 0.4);
+        transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+        background-color: rgb(0, 60, 110);
+        box-shadow: 0 6px 14px rgba(0, 60, 110, 0.5);
+        }
     </style>
     <!-- FontAwesome para iconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
-
-<% if current_therapist %>
 <body>
+
     <div class="menu-container">
         <div class="form-menu">
             <!-- Encabezado con logo y título -->
             <div class="menu-header">
-	      <%= image_tag 'logo.png', alt: 'Logo DAITOP', class: 'logo' %>
-
-                <h3>DAITOV - Menú del Terapeuta</h3>
+                <%= image_tag 'logo.png', alt: 'Logo DAITOP', class: 'logo' %>
+                <h3>DAITOV - Menú del Tutor</h3>
             </div>
 
             <!-- Pestañas del Menú -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="registrar-tab" data-bs-toggle="tab" data-bs-target="#registrar" type="button" role="tab" aria-controls="registrar" aria-selected="true">
-                        <i class="fas fa-user-plus"></i> Registrar Usuario
+                        <i class="fas fa-user-plus"></i> Registrar Paciente
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="false">
                         <i class="fas fa-info-circle"></i> Ver Info Usuario
                     </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="programar-tab" data-bs-toggle="tab" data-bs-target="#programar" type="button" role="tab" aria-controls="programar" aria-selected="false">
-                        <i class="fas fa-tasks"></i> Programar Tarea
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="iniciar-tab" data-bs-toggle="tab" data-bs-target="#iniciar" type="button" role="tab" aria-controls="iniciar" aria-selected="false">
-                        <i class="fas fa-play"></i> Iniciar Tarea
-                    </button>
-                </li>
             </ul>
 
             <!-- Contenido de las Pestañas -->
             <div class="tab-content" id="myTabContent">
                 <!-- Pestaña: Registrar Usuario -->
                 <div class="tab-pane fade show active" id="registrar" role="tabpanel" aria-labelledby="registrar-tab">
-                    <h4>Registrar Nuevo Usuario</h4>
+                    <h4>Registrar Nuevo Paciente</h4>
                     <form>
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre del Paciente</label>
@@ -301,7 +301,7 @@
                 </div>
             </div>
         </div>
-        
+
         <p class="copyright mt-5 mb-3 text-muted">&copy; Instituto Tecnologico de Ensenada</p>
     </div>
 
@@ -309,13 +309,223 @@
 </body>
 </html>
 <p class="copyright mt-5 mb-3 text-mute">Has iniciado sesión como: <%= current_therapist.email %></p>
+
+
 <% else %>
-  <h1 class="mb-4 fw-normal text-center">Bienvenido a DAITOP</h1>
-  <p class="mb-4 fw-normal text-center">Esta es la página principal</p>
-  <div class="d-flex justify-content-center">
-    <%= link_to 'Iniciar Sesión', new_session_path, class: 'btn btn-primary w-25 text-nowrap' %>
-  </div>
+
+
+  <!-- <h1 class="mb-4 fw-normal text-center">Bienvenido a DAITOP</h1> -->
+  <!-- <p class="mb-4 fw-normal text-center">Esta es la página principal</p> -->
+  <!-- <div class="d-flex justify-content-center"> -->
+  <!--   <%= link_to 'Iniciar Sesión', new_session_path, class: 'btn btn-primary w-25 text-nowrap' %> -->
+  <!-- </div> -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAITOV- Innovación Educativa</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #343a40;
+    }
+
+    .navbar {
+      background-color: #055D9A;
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: #fff !important;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #cce5ff !important;
+    }
+
+    .hero-section {
+      position: relative;
+      background: url('<%= asset_path('fondo.jpg') %>') no-repeat center center/cover;
+      color: white;
+      padding: 140px 0;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+      z-index: -1;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .hero-section p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #055D9A;
+    }
+
+    .feature-item {
+      padding: 30px 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .footer {
+      background-color: #212529;
+      color: #dee2e6;
+      padding: 40px 0;
+    }
+
+    .footer a {
+      color: #adb5bd;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">DAITOV</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <!-- <a class="nav-link active" href="login.html">Iniciar Sesión</a> -->
+	    <%= link_to 'Iniciar Sesión', new_session_path, class: 'nav-link active' %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#features">Características</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">Sobre nosotros</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <h1>Bienvenidos a DAITOV</h1>
+      <p>Una herramienta educativa interactiva para apoyar terapias ocupacionales de vestir</p>
+      
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-5">
+    <div class="container">
+      <h2 class="text-center fw-bold mb-5">Características</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-item text-center h-100">
+            <div class="feature-icon">
+              <i class="bi bi-laptop"></i>
+            </div>
+            <h5 class="fw-bold">Plataforma Interactiva</h5>
+            <p>Ejercicios guiados para el desarrollo de habilidades motrices y cognitivas.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-item text-center h-100">
+            <div class="feature-icon">
+              <i class="bi bi-people"></i>
+            </div>
+            <h5 class="fw-bold">Comunidad Segura</h5>
+            <p>Monitoreo del progreso en un entorno controlado para terapeutas y usuarios.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-item text-center h-100">
+            <div class="feature-icon">
+              <i class="bi bi-pc-display"></i>
+            </div>
+            <h5 class="fw-bold">Accesible desde cualquier dispositivo</h5>
+            <p>Compatible con computadoras, tablets y smartphones sin complicaciones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="bg-light py-5">
+    <div class="container">
+      <h2 class="text-center fw-bold mb-4">Sobre nosotros</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <p class="text-center mb-3">
+            <strong>DAITOV</strong> (Dispositivo de Asistencia Interactivo para la Terapia Ocupacional del Vestir) es una herramienta diseñada para <strong>estimular el desarrollo cognitivo y motriz</strong> mediante actividades vinculadas al acto de vestirse.
+          </p>
+          <p class="text-center">
+            El sistema incluye un <strong>armario interactivo</strong> y un <strong>personaje semidigital</strong>: un cuerpo plano al que se le colocan prendas físicas y una pantalla que muestra la cara animada del personaje, guiando la actividad con estímulos visuales.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <p class="mb-2">&copy; 2025 DAITOV. Todos los derechos reservados.</p>
+      <div>
+        <a href="#">Política de privacidad</a> |
+        <a href="#">Términos y condiciones</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
 <% end %>
+  
+
+  
 <!-- <% if current_therapist %> -->
 <!--   <div class="container mt-5"> -->
 <!--     <div class="card text-center"> -->
