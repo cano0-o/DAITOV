@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_therapist
+  helper_method :current_tutor
 
   private
 
-  def current_therapist
-    @current_therapist ||= Therapist.find(session[:therapist_id]) if session[:therapist_id]
+  def current_tutor
+    @current_tutor ||= Tutor.find(session[:tutor_id]) if session[:tutor_id]
   end
 end
