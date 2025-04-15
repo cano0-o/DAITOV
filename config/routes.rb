@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'registro', to: 'therapists#new', as: :new_therapist
-  post 'registro', to: 'therapists#create'
+  get "tutors/new"
+  get "tutors/create"
+  get 'registro', to: 'tutors#new', as: :new_tutor
+  post 'registro', to: 'tutors#create'
   
   get 'inicio-sesion', to: 'sessions#new', as: :new_session
   post 'inicio-sesion', to: 'sessions#create', as: :inicio_sesion
