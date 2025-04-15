@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_09_151152) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_14_165738) do
   create_table "therapists", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -23,5 +23,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_09_151152) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_therapists_on_email", unique: true
+  end
+
+  create_table "tutors", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "paternal_last_name"
+    t.string "maternal_last_name"
+    t.string "gender"
+    t.date "birth_date"
+    t.string "current_profession"
+    t.integer "graduation_year"
+    t.string "institution_name"
+    t.integer "start_year"
+    t.string "email"
+    t.string "phone_number"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_tutors_on_email", unique: true
+    t.index ["phone_number"], name: "index_tutors_on_phone_number", unique: true
   end
 end
