@@ -1,5 +1,6 @@
 class Tutor < ApplicationRecord
   has_secure_password
+  has_many :pacientes
   
   # Validaciones
   validates :name, presence: true
