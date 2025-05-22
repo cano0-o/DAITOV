@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tutor: one
+  nombre: MyString
+  paternal_last_name: MyString
+  maternal_last_name: MyString
+  birth_date: 2025-05-22
+  sexo: MyString
+  nivel_discapacidad_cognitiva: MyString
+  nivel_discapacidad_visual: MyString
+  nivel_discapacidad_auditiva: MyString
+  nivel_discapacidad_motriz_gruesa: MyString
+  nivel_discapacidad_motriz_fina: MyString
+
+two:
+  tutor: two
+  nombre: MyString
+  paternal_last_name: MyString
+  maternal_last_name: MyString
+  birth_date: 2025-05-22
+  sexo: MyString
+  nivel_discapacidad_cognitiva: MyString
+  nivel_discapacidad_visual: MyString
+  nivel_discapacidad_auditiva: MyString
+  nivel_discapacidad_motriz_gruesa: MyString
+  nivel_discapacidad_motriz_fina: MyString
