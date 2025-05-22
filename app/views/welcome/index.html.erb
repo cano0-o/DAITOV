@@ -162,58 +162,56 @@
             <div class="tab-content" id="myTabContent">
                 <!-- Pestaña: Registrar Usuario -->
                 <div class="tab-pane fade show active" id="registrar" role="tabpanel" aria-labelledby="registrar-tab">
-                    <h4>Registrar Nuevo Paciente</h4>
+                  <h4>Registrar Nuevo Paciente</h4>
+		  <%= form_with(model: @paciente, url: pacientes_path, local: true) do |form| %>
                     <form>
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre del Paciente</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
-                            <input type="text" class="form-control" id="apellidoPaterno" placeholder="Apellido Paterno" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
-                            <input type="text" class="form-control" id="apellidoMaterno" placeholder="Apellido Materno" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="genero" class="form-label">Género</label>
-                            <select class="form-control" id="genero" required>
-                                <option value="">Selecciona...</option>
-                                <option value="masculino">Masculino</option>
-                                <option value="femenino">Femenino</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control" id="fechaNacimiento" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="discapacidadCognitiva" class="form-label">Nivel de Discapacidad Cognitiva</label>
-                            <input type="text" class="form-control" id="discapacidadCognitiva" placeholder="Nivel" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="discapacidadVisual" class="form-label">Nivel de Discapacidad Visual</label>
-                            <input type="text" class="form-control" id="discapacidadVisual" placeholder="Nivel" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="discapacidadAuditiva" class="form-label">Nivel de Discapacidad Auditiva</label>
-                            <input type="text" class="form-control" id="discapacidadAuditiva" placeholder="Nivel" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="discapacidadMotrizGruesa" class="form-label">Nivel de Discapacidad Motriz Gruesa</label>
-                            <input type="text" class="form-control" id="discapacidadMotrizGruesa" placeholder="Nivel" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="discapacidadMotrizFina" class="form-label">Nivel de Discapacidad Motriz Fina</label>
-                            <input type="text" class="form-control" id="discapacidadMotrizFina" placeholder="Nivel" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Registrar</button>
-                        <button type="reset" class="btn btn-danger">Limpiar</button>
-                    </form>
-                </div>
-
+                      <div class="mb-3">
+			<%= form.label :nombre, "Nombre del Paciente", class: "form-label" %>
+			<%= form.text_field :nombre, class: "form-control", required: true %>
+                      </div>
+                      <div class="mb-3">
+			<%= form.label :paternal_last_name, "Apellido Paterno", class: "form-label" %>
+			<%= form.text_field :paternal_last_name, class: "form-control", required: true %>
+                      </div>
+                      <div class="mb-3">
+			<%= form.label :maternal_last_name, "Apellido Materno", class: "form-label" %>
+			<%= form.text_field :maternal_last_name, class: "form-control", required: true %>
+                      </div>
+		      <div class="mb-3">
+			<%= form.label :sexo, "Género", class: "form-label" %>
+			<%= form.select :sexo, 
+			    options_for_select([
+			    ["Selecciona...", ""],
+			    ["Masculino", "masculino"],
+			    ["Femenino", "femenino"],
+			    ["Otro", "otro"]
+			    ]), 
+			    {}, 
+			    { class: "form-control", required: true } 
+			    %>
+		      </div>
+                      <div class="mb-3">
+			<%= form.label :birth_date, "Fecha de Nacimiento", class: "form-label" %>
+			<%= form.date_field :birth_date, class: "form-control", required: true %>
+                      </div>
+                      <div class="mb-3">
+			<% [
+			   [:nivel_discapacidad_cognitiva, "Cognitiva"],
+			   [:nivel_discapacidad_visual, "Visual"],
+			   [:nivel_discapacidad_auditiva, "Auditiva"],
+			   [:nivel_discapacidad_motriz_gruesa, "Motriz Gruesa"],
+			   [:nivel_discapacidad_motriz_fina, "Motriz Fina"]
+			   ].each do |field, label| %>
+			<div class="mb-3">
+			  <%= form.label field, "Nivel de Discapacidad #{label}", class: "form-label" %>
+			  <%= form.text_field field, class: "form-control", required: true %>
+			</div>
+			<% end %>
+			<%= form.submit "Registrar", class: "btn btn-primary" %>
+			<button type="reset" class="btn btn-danger">Limpiar</button>
+			<% end %>
+		      </div>
+		</div>
                 <!-- Pestaña: Ver Info Usuario -->
                 <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
                     <h4>Información del Usuario</h4>
