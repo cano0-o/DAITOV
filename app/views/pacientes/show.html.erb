@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAITOV - Detalles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0); /* Fondo degradado */
+            font-family: 'Arial', sans-serif; /* Fuente profesional */
+        }
+
+        .menu-container {
+            max-width: 1000px; /* Más ancho para acomodar más contenido */
+            margin: 0 auto;
+            padding: 2rem;
+            margin-top: 5%;
+        }
+        
+        .form-menu {
+            background: rgb(255, 255, 255); /* Fondo blanco para el menú */
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            color: #6c757d; /* Texto gris para el copyright */
+            font-size: 0.9rem;
+        }
+
+        .logo {
+            width: 100px; /* Tamaño reducido */
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .menu-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333; /* Color oscuro para el título */
+        }
+
+        .nav-tabs {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-tabs .nav-link {
+            color: #055D9A; /* Color azul para las pestañas */
+            border: 1px solid transparent;
+            border-radius: 8px 8px 0 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #495057; /* Color oscuro para la pestaña activa */
+            background-color: #f8f9fa; /* Fondo gris claro */
+            border-color: #dee2e6 #dee2e6 #f8f9fa;
+        }
+
+        .nav-tabs .nav-link:hover {
+            background-color: #e9ecef; /* Fondo más oscuro al pasar el mouse */
+        }
+
+        .tab-content {
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Color azul para botones */
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Color azul más oscuro al pasar el mouse */
+        }
+
+        .btn-danger {
+            background-color: #dc3545; /* Color rojo para botones de limpiar */
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Color rojo más oscuro al pasar el mouse */
+        }
+        .btn-primary {
+        background-color: rgb(5, 93, 154);
+        border: none;
+        box-shadow: 0 4px 10px rgba(5, 93, 154, 0.4);
+        transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+        background-color: rgb(0, 60, 110);
+        box-shadow: 0 6px 14px rgba(0, 60, 110, 0.5);
+        }
+	
+	.btn-logout {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background-color: #dc3545;
+	border-radius: 20px;
+	padding: 8px 20px;
+	font-size: 0.9rem;
+	transition: all 0.3s ease;
+	}
+
+	.btn-logout:hover {
+	background-color: #bb2d3b;
+	transform: translateY(-2px);
+	}
+    </style>
+    <!-- FontAwesome para iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="menu-container">
+    <div class="form-menu">
+      <!-- Encabezado con logo y título -->
+      <div class="menu-header">
+        <%= image_tag 'logo.png', alt: 'Logo DAITOP', class: 'logo' %>
+        <h3>DAITOV - Detalles</h3>
+      </div>
+
+      <div class="container mt-5">
+	<div class="card">
+	  <div class="card-header bg-primary text-white">
+	    <h2 class="mb-0">Detalles completos del paciente</h2>
+	  </div>
+	  <div class="card-body">
+	    <div class="row">
+              <!-- Datos Básicos -->
+              <div class="col-md-6">
+		<h4>Información Personal</h4>
+		<dl class="row">
+		  <dt class="col-sm-4">Nombre completo:</dt>
+		  <dd class="col-sm-8">
+		    <%= @paciente.nombre %> 
+		    <%= @paciente.paternal_last_name %> 
+		    <%= @paciente.maternal_last_name %>
+		  </dd>
+
+		  <dt class="col-sm-4">Género:</dt>
+		  <dd class="col-sm-8"><%= @paciente.sexo.titleize %></dd>
+
+		  <dt class="col-sm-4">Fecha de nacimiento:</dt>
+		  <dd class="col-sm-8"><%= @paciente.birth_date.strftime("%d/%m/%Y") %></dd>
+
+		  <dt class="col-sm-4">Edad:</dt>
+		  <dd class="col-sm-8"><%= age(@paciente.birth_date) %> años</dd>
+		</dl>
+              </div>
+
+              <!-- Discapacidades -->
+              <div class="col-md-6">
+		<h4>Niveles de Discapacidad</h4>
+		<dl class="row">
+		  <dt class="col-sm-5">Cognitiva:</dt>
+		  <dd class="col-sm-7"><%= @paciente.nivel_discapacidad_cognitiva %></dd>
+
+		  <dt class="col-sm-5">Visual:</dt>
+		  <dd class="col-sm-7"><%= @paciente.nivel_discapacidad_visual %></dd>
+
+		  <dt class="col-sm-5">Auditiva:</dt>
+		  <dd class="col-sm-7"><%= @paciente.nivel_discapacidad_auditiva %></dd>
+
+		  <dt class="col-sm-5">Motriz Gruesa:</dt>
+		  <dd class="col-sm-7"><%= @paciente.nivel_discapacidad_motriz_gruesa %></dd>
+
+		  <dt class="col-sm-5">Motriz Fina:</dt>
+		  <dd class="col-sm-7"><%= @paciente.nivel_discapacidad_motriz_fina %></dd>
+		</dl>
+              </div>
+	    </div>
+
+	    <!-- Datos Adicionales -->
+	    <div class="row mt-4">
+              <div class="col-12">
+		<h4>Información Adicional</h4>
+		<dl class="row">
+		  <dt class="col-sm-3">Registrado por:</dt>
+		  <dd class="col-sm-9">
+		    <%= current_tutor.name %> (<%= current_tutor.email %>)
+		  </dd>
+
+		  <dt class="col-sm-3">Fecha de registro:</dt>
+		  <dd class="col-sm-9"><%= @paciente.created_at.strftime("%d/%m/%Y %H:%M") %></dd>
+
+		  <dt class="col-sm-3">Última actualización:</dt>
+		  <dd class="col-sm-9"><%= @paciente.updated_at.strftime("%d/%m/%Y %H:%M") %></dd>
+		</dl>
+              </div>
+	    </div>
+	  </div>
+	  
+	  <div class="card-footer text-end">
+	    <%= link_to 'Volver al listado', pacientes_path, class: 'btn btn-secondary' %>
+	  </div>
+	</div>
+      </div>
+      <p class="copyright mt-5 mb-3 text-muted">&copy; Instituto Tecnologico de Ensenada</p>
+    </div>
+    
+    <div class="text-center mt-4">
+      <%= button_to "Cerrar Sesión", destroy_session_path, 
+          method: :delete, 
+          class: 'btn btn-primary btn-sm' %>
+    </div>
+
+    <p class="copyright mt-5 mb-3 text-mute">Has iniciado sesión como: <%= current_tutor.email %></p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
