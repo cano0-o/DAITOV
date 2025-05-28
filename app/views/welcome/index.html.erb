@@ -213,62 +213,88 @@
 		      </div>
 		</div>
                 <!-- Pestaña: Ver Info Usuario -->
-                <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
-                    <h4>Información del Usuario</h4>
-                    <div class="mb-3">
-                        <label for="nombrePaciente" class="form-label">Nombre del Paciente</label>
-                        <input type="text" class="form-control" id="nombrePaciente" placeholder="Nombre del Paciente" required>
-                    </div>
-                    <h5>Tabla de Sesiones</h5>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Actividad</th>
-                                <th>Resultado</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2025-03-01</td>
-                                <td>Vestir abrigo</td>
-                                <td>Éxito</td>
-                            </tr>
-                            <tr>
-                                <td>2025-03-02</td>
-                                <td>Abrochar cierre</td>
-                                <td>Fallido</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <h5>Tabla de Detalles de Sesión</h5>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Detalle</th>
-                                <th>Valor</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Oportunidades</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>Tiempo</td>
-                                <td>5 minutos</td>
-                            </tr>
-                            <tr>
-                                <td>Errores</td>
-                                <td>2</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button type="button" class="btn btn-primary">Ver Información</button>
-                    <button type="button" class="btn btn-primary">Ver Detalles</button>
-                </div>
+		<div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+		  <h4>Consulta de Pacientes</h4>
+		  
+		  <!-- Barra de Búsqueda -->
+		  <div class="mb-4">
+		    <%= form_with url: buscar_pacientes_path, method: :get, local: true, class: "d-flex" do |form| %>
+		    <%= form.text_field :busqueda, 
+			class: "form-control me-2", 
+			placeholder: "Buscar por nombre, apellido o ID",
+			value: params[:busqueda] %>
+		    <%= form.submit "Buscar", class: "btn btn-outline-primary" %>
+		    <% end %>
+		  </div>
 
-                <!-- Pestaña: Programar Tarea -->
+		  <!-- Listado de Pacientes -->
+		  <div class="patient-list">
+		    <% @pacientes.each do |paciente| %>
+		    <div class="card mb-3">
+                      <div class="card-body">
+			<h5 class="card-title">
+                          <%= link_to paciente.nombre_completo, paciente_path(paciente), class: 'text-decoration-none' %>
+			</h5>
+			<p class="card-text">
+                          <strong>ID:</strong> <%= paciente.id %> |
+                          <strong>Género:</strong> <%= paciente.sexo.titleize %> |
+                          <strong>Edad:</strong> <%= age(paciente.birth_date) %> años
+			</p>
+			
+			<!-- Botón para ver detalles completos -->
+			<button class="btn btn-sm btn-primary toggle-details" 
+				data-paciente-id="<%= paciente.id %>">
+                          Ver detalles completos
+			</button>
+
+			<!-- Detalles completos (ocultos inicialmente) -->
+			<div class="patient-details" id="details-<%= paciente.id %>" style="display: none;">
+                          <table class="table table-bordered mt-3">
+                            <tbody>
+                              <tr>
+                                <th>Fecha de Nacimiento</th>
+                                <td><%= paciente.birth_date.strftime("%d/%m/%Y") %></td>
+                              </tr>
+                              <tr>
+                                <th>Discapacidad Cognitiva</th>
+                                <td><%= paciente.nivel_discapacidad_cognitiva %></td>
+                              </tr>
+                              <tr>
+                                <th>Discapacidad Visual</th>
+                                <td><%= paciente.nivel_discapacidad_visual %></td>
+                              </tr>
+                              <tr>
+                                <th>Discapacidad Auditiva</th>
+                                <td><%= paciente.nivel_discapacidad_auditiva %></td>
+                              </tr>
+                              <tr>
+                                <th>Disc. Motriz Gruesa</th>
+                                <td><%= paciente.nivel_discapacidad_motriz_gruesa %></td>
+                              </tr>
+                              <tr>
+                                <th>Disc. Motriz Fina</th>
+                                <td><%= paciente.nivel_discapacidad_motriz_fina %></td>
+                              </tr>
+                            </tbody>
+                          </table>
+			</div>
+                      </div>
+		    </div>
+		    <% end %>
+		  </div>
+		</div>
+
+		<% content_for :javascript do %>
+		<script>
+		  document.querySelectorAll('.toggle-details').forEach(button => {
+		      button.addEventListener('click', () => {
+			  const detailsDiv = document.getElementById(`details-${button.dataset.pacienteId}`);
+			  detailsDiv.style.display = detailsDiv.style.display === 'none' ? 'block' : 'none';
+			  button.textContent = detailsDiv.style.display === 'none' ? 'Ver detalles' : 'Ocultar detalles';
+		      });
+		  });
+		</script>
+		<% end %>
                 <div class="tab-pane fade" id="programar" role="tabpanel" aria-labelledby="programar-tab">
                     <h4>Programar Tarea</h4>
                     <form>
