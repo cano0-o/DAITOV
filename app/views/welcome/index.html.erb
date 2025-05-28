@@ -240,12 +240,6 @@
                           <strong>Género:</strong> <%= paciente.sexo.titleize %> |
                           <strong>Edad:</strong> <%= age(paciente.birth_date) %> años
 			</p>
-			
-			<!-- Botón para ver detalles completos -->
-			<button class="btn btn-sm btn-primary toggle-details" 
-				data-paciente-id="<%= paciente.id %>">
-                          Ver detalles completos
-			</button>
 
 			<!-- Detalles completos (ocultos inicialmente) -->
 			<div class="patient-details" id="details-<%= paciente.id %>" style="display: none;">
@@ -295,50 +289,6 @@
 		  });
 		</script>
 		<% end %>
-                <div class="tab-pane fade" id="programar" role="tabpanel" aria-labelledby="programar-tab">
-                    <h4>Programar Tarea</h4>
-                    <form>
-                        <div class="mb-3">
-                            <label for="nombrePacienteTarea" class="form-label">Nombre del Paciente</label>
-                            <input type="text" class="form-control" id="nombrePacienteTarea" placeholder="Nombre del Paciente" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="actividad" class="form-label">Actividad</label>
-                            <input type="text" class="form-control" id="actividad" placeholder="Actividad" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="retroalimentacion" class="form-label">Retroalimentación</label>
-                            <select class="form-control" id="retroalimentacion" required>
-                                <option value="">Selecciona...</option>
-                                <option value="auditiva">Auditiva</option>
-                                <option value="visual">Visual</option>
-                                <option value="háptica">Háptica</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Programar</button>
-                    </form>
-                </div>
-
-                <!-- Pestaña: Iniciar Tarea -->
-                <div class="tab-pane fade" id="iniciar" role="tabpanel" aria-labelledby="iniciar-tab">
-                    <h4>Iniciar Tarea</h4>
-                    <form>
-                        <div class="mb-3">
-                            <label for="nombrePacienteIniciar" class="form-label">Nombre del Paciente</label>
-                            <input type="text" class="form-control" id="nombrePacienteIniciar" placeholder="Nombre del Paciente" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="tarea" class="form-label">Tarea</label>
-                            <select class="form-control" id="tarea" required>
-                                <option value="">Selecciona...</option>
-                                <option value="frío">Frío</option>
-                                <option value="lluvia">Lluvia</option>
-                                <option value="noche">Noche</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Iniciar Tarea</button>
-                    </form>
-                </div>
             </div>
         </div>
 
