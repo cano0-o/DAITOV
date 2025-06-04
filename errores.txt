@@ -1,0 +1,12 @@
+* Posibles errores que encontré:
+** Imposibilidad de instalación a través de docker.
+- [ ] no resuelto.
+
+** Error de dependencias.
+- [X] resuelto.
+
+** Error al ejecutar migraciones.
+- [X] resuelto.
+
+*** Nota
+Configurar credenciales en mariadb manualmente, declarar la ubicación del socket.
