@@ -1,26 +1,28 @@
 # DAITOV
 
-**Proyecto escolar orientado a personas con discapacidades motoras finas y gruesas.**
+DAITOV es un proyecto escolar orientado a personas con discapacidades motoras finas y gruesas. Su objetivo es facilitar la interacción con dispositivos digitales mediante soluciones tecnológicas accesibles y adaptadas a las necesidades de los usuarios.
+___
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**🧠 Objetivo**
 
-Things you may want to cover:
+Desarrollar una herramienta inclusiva que permita a personas con limitaciones motoras interactuar de manera eficiente con interfaces digitales, promoviendo la autonomía y mejorando su calidad de vida.
+⚙️ Tecnologías utilizadas
+- Ruby on Rails: Framework principal para el desarrollo de la aplicación web.
+- Docker: Contenedorización del entorno de desarrollo y producción.
+- Bootstrap: Framework CSS para diseño responsivo y accesible.
+___
+**📁 Estructura del proyecto**
 
-* Ruby version
+El repositorio contiene las siguientes carpetas y archivos principales:
 
-* System dependencies
+    app/: Contiene los controladores, modelos y vistas de la aplicación.
 
-* Configuration
+    config/: Archivos de configuración del entorno y rutas.
 
-* Database creation
+    db/: Migraciones y esquema de la base de datos.
 
-* Database initialization
+    public/: Archivos estáticos accesibles públicamente.
 
-* How to run the test suite
+    Dockerfile y docker-compose.yml: Configuración para la contenedorización con Docker.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    README.md: Documentación del proyecto.
