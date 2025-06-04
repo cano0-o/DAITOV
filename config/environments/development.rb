@@ -71,4 +71,4 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 end
 
-config.host "relevant-eagle-violently.ngrok-free.app"
+config.hosts "relevant-eagle-violently.ngrok-free.app"
