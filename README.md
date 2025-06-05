@@ -75,7 +75,7 @@ _______
 
 📚 Documentación del Proyecto
 
-- 📘 Manual Técnico
+- 📘 Manual Técnico https://github.com/cano0-o/DAITOV/blob/main/Documentacion/Manual%20de%20Usuario.pdf
 - 👥 Manual de Usuario 
 
 👨‍💻 Equipo de Desarrollo
