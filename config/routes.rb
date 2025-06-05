@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   post '/pacientes', to: 'pacientes#create', as: :crear_paciente
   get '/pacientes', to: 'pacientes#index', as: :pacientes
   resources :pacientes, only: [:index, :create], path_names: {
-    index: 'buscar'
+  index: 'buscar'
   }
+  resources :pacientes, except: [:new] do
+    member do
+      get 'edit'
+    end
+  end
   get 'pacientes/buscar', to: 'pacientes#buscar', as: :buscar_pacientes
   resources :pacientes, only: [:show, :index, :create]
   
