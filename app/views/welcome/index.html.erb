@@ -194,7 +194,7 @@
 			<%= form.label :birth_date, "Fecha de Nacimiento", class: "form-label" %>
 			<%= form.date_field :birth_date, class: "form-control", required: true %>
                       </div>
-                      <div class="mb-3">
+		      <div class="mb-3">
 			<% [
 			   [:nivel_discapacidad_cognitiva, "Cognitiva"],
 			   [:nivel_discapacidad_visual, "Visual"],
@@ -204,13 +204,24 @@
 			   ].each do |field, label| %>
 			<div class="mb-3">
 			  <%= form.label field, "Nivel de Discapacidad #{label}", class: "form-label" %>
-			  <%= form.text_field field, class: "form-control", required: true %>
+			  <%= form.select field, 
+			      options_for_select([
+			      ["Selecciona...", ""],
+			      ["Leve", "leve"],
+			      ["Moderado", "moderado"],
+			      ["Severo", "severo"]
+			      ]),
+			      {},
+			      { class: "form-control", required: true } 
+			      %>
 			</div>
 			<% end %>
-			<%= form.submit "Registrar", class: "btn btn-primary" %>
-			<button type="reset" class="btn btn-danger">Limpiar</button>
-			<% end %>
 		      </div>
+		      <%= form.submit "Registrar", class: "btn btn-primary" %>
+		      <button type="reset" class="btn btn-danger">Limpiar</button>
+		      <% end %>
+		<!-- </div> -->
+		
 		</div>
                 <!-- Pestaña: Ver Info Usuario -->
 		<div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
