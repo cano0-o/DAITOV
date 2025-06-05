@@ -72,9 +72,9 @@ El repositorio contiene las siguientes carpetas y archivos principales:
   cd Daitov
 _______
 
-Pagina web
+**Pagina web**
 Home: https://relevant-eagle-violently.ngrok-free.app/inicio-sesion
-
+______
 📚 Documentación del Proyecto
 
 - 📘 Manual Técnico: https://github.com/cano0-o/DAITOV/blob/main/Documentacion/manual%20te%CC%81cnico.pdf
