@@ -213,9 +213,27 @@
 	    </div>
 	  </div>
 	  
+	  <!-- <div class="card-footer text-end"> -->
+	  <!--   <%= link_to 'Volver al listado', pacientes_path, class: 'btn btn-secondary' %> -->
+	  <!-- </div> -->
 	  <div class="card-footer text-end">
-	    <%= link_to 'Volver al listado', pacientes_path, class: 'btn btn-secondary' %>
-	  </div>
+            <div class="btn-actions">
+              <%= link_to 'Volver al listado', pacientes_path, class: 'btn btn-secondary' %>
+              
+              <!-- Botón para modificar datos -->
+              <%= link_to edit_paciente_path(@paciente), class: 'btn btn-warning' do %>
+                <i class="fas fa-edit me-1"></i> Modificar Datos
+              <% end %>
+              
+              <!-- Botón para eliminar paciente -->
+	      <%= button_to paciente_path(@paciente),
+                  method: :delete,
+                  class: 'btn btn-danger',
+                  form: { data: { turbo_confirm: '¿Estás seguro de eliminar este paciente? Esta acción no se puede deshacer.' } } do %>
+                <i class="fas fa-trash-alt me-1"></i> Eliminar Paciente
+              <% end %>
+            </div>
+          </div>
 	</div>
       </div>
       <p class="copyright mt-5 mb-3 text-muted">&copy; Instituto Tecnologico de Ensenada</p>
