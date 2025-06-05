@@ -4,6 +4,10 @@ class PacientesController < ApplicationController
   def index
     @pacientes = current_tutor.pacientes.order(created_at: :desc)
   end
+  
+  def edit
+    @paciente = current_tutor.pacientes.find(params[:id])
+  end
 
   def buscar
     @pacientes = current_tutor.pacientes
@@ -36,6 +40,21 @@ class PacientesController < ApplicationController
     else
       render 'welcome/index'
     end
+  end
+
+  def update
+    @paciente = current_tutor.pacientes.find(params[:id])
+    if @paciente.update(paciente_params)
+      redirect_to paciente_path(@paciente), notice: 'Paciente actualizado correctamente'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @paciente = current_tutor.pacientes.find(params[:id])
+    @paciente.destroy
+    redirect_to pacientes_path, notice: 'Paciente eliminado correctamente'
   end
 
   private
