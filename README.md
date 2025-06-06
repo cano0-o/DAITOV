@@ -74,7 +74,7 @@ _______
 
 **Pagina web**
 
-**Home**: https://relevant-eagle-violently.ngrok-free.app/inicio-sesion
+**Home**: https://relevant-eagle-violently.ngrok-free.app/
 ______
 📚 Documentación del Proyecto
 
